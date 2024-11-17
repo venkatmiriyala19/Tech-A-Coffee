@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import ClientWrapper from "./ClientWrapper";
 import { Suspense } from "react";
+import { NewsProvider } from "@/context/NewsContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,7 +41,9 @@ export default function RootLayout({ children }) {
         </head>
         <body>
           <Suspense fallback={<div>Loading...</div>}>
-            <ClientWrapper>{children}</ClientWrapper>
+            <NewsProvider>
+              <ClientWrapper>{children}</ClientWrapper>
+            </NewsProvider>
           </Suspense>
         </body>
       </html>

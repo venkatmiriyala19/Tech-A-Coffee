@@ -15,7 +15,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="flex items-center justify-between mt-5 pl-5">
+    <div className="flex items-center justify-between mt-5 pl-5 mb-12">
       <img
         src="/assets/images/tech-a-coffee-logo.png"
         alt="Logo"
