@@ -13,7 +13,8 @@ export default function News({ title, date, img, url, width }) {
             rel="noopener noreferrer"
             className="text-black font-bold w-11/12 block "
           >
-            <h1 className="line-clamp-2">{title}</h1> {/* Limit to 2 lines */}
+            <h1 className="line-clamp-2 hover:underline">{title}</h1>{" "}
+            {/* Limit to 2 lines */}
           </a>
           <img
             src={"/assets/images/bookmark.png"}
