@@ -81,6 +81,8 @@ export default function Feed() {
                   title={item.webTitle}
                   date={new Date(item.webPublicationDate).toLocaleDateString()}
                   img={item.fields.thumbnail}
+                  url={item.webUrl}
+                  width="25vw"
                 />
               ))
           )}
