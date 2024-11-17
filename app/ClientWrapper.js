@@ -26,7 +26,9 @@ export default function ClientWrapper({ children }) {
       }
     }
   }, [isSignedIn, pathname, router]);
-
+  if (pathname === "/" || pathname === "/authentication") {
+    return <>{children}</>;
+  }
   return (
     <>
       <SignedOut>
