@@ -1,12 +1,7 @@
 "use client";
 
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  useAuth,
-  UserButton,
-} from "@clerk/nextjs";
+import Navbar from "@/components/Navbar";
+import { SignedIn, SignedOut, SignInButton, useAuth } from "@clerk/nextjs";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
 
@@ -36,7 +31,7 @@ export default function ClientWrapper({ children }) {
         {children}
       </SignedOut>
       <SignedIn>
-        <UserButton />
+        <Navbar />
         {children}
       </SignedIn>
     </>
