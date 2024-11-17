@@ -22,7 +22,7 @@ export default function LatestTech() {
           <News
             key={item.id}
             title={item.webTitle}
-            date={new Date(item.webPublicationDate).toLocaleDateString()}
+            date={new Date(item.webPublicationDate).toLocaleString()}
             img={item.fields.thumbnail}
             url={item.webUrl}
             width="15vw"

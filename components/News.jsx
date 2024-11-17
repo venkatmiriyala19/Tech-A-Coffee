@@ -4,7 +4,15 @@ export default function News({ title, date, img, url, width }) {
       <img src={img} alt="Placeholder" className="w-full h-40 object-cover" />
       <div className="w-[100%] bg-white px-3 py-5">
         <p className="text-[#537692] text-opacity-80 text-sm font-bold">
-          {date || "No Date"}
+          {new Date(date).toLocaleString("en-US", {
+            weekday: "short",
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          })}
         </p>
         <div className="flex items-center">
           <a
