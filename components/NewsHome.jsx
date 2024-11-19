@@ -1,6 +1,6 @@
 export default function News({ title, date, img, url, width }) {
   return (
-    <div className={`w-[20vw] rounded-xl overflow-hidden shadow-lg mb-10 `}>
+    <div className={`w-[25vw] rounded-xl overflow-hidden shadow-lg mb-10 `}>
       <img src={img} alt="Placeholder" className="w-full h-40 object-cover" />
       <div className="w-[100%] bg-white px-3 py-5">
         <p className="text-[#537692] text-opacity-80 text-xs font-bold">

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import News from "@/components/News";
+import NewsHome from "@/components/NewsHome";
 import { useNews } from "@/context/NewsContext";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
@@ -76,7 +76,7 @@ export default function Feed() {
             news
               .slice(0, 4)
               .map((item) => (
-                <News
+                <NewsHome
                   key={item.id}
                   title={item.webTitle}
                   date={new Date(item.webPublicationDate).toLocaleString()}
