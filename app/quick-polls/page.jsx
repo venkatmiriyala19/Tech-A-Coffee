@@ -1,3 +1,9 @@
+import QuickPoll from "@/components/QuickPoll";
+
 export default function QuickPolls() {
-  return <div>Hi</div>;
+  return (
+    <div>
+      <QuickPoll />
+    </div>
+  );
 }
