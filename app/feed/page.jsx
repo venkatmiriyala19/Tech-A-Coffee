@@ -13,7 +13,7 @@ export default function Feed() {
     setLoading(true); // Start loading
     try {
       const genAI = new GoogleGenerativeAI(
-        "AIzaSyBbJHk4DhpIIpy0P9e9Pl-4baOHqmb7cAs"
+        process.env.NEXT_PUBLIC_GEMINI_API_KEY
       );
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
       const prompt = "Generate a new Tech Fact";
