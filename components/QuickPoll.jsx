@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PollOption from "./PollOption";
 
 export default function QuickPoll({ poll, userId }) {
-  const { _id, question, options, votedUsers } = poll; // Deconstruct `votedUsers`
+  const { _id, question, options, votedUsers, userName } = poll; // Deconstruct `votedUsers`
   const [updatedOptions, setUpdatedOptions] = useState(options);
   const [userVoted, setUserVoted] = useState(false);
   const [selectedOptionId, setSelectedOptionId] = useState(null);
@@ -34,16 +34,19 @@ export default function QuickPoll({ poll, userId }) {
 
   return (
     <div className="bg-[#EEF3F9] w-full rounded-3xl p-3 px-5 border-2 border-black mb-4 h-auto">
-      <h3 className="text-[#1D3F58] font-bold text-sm">Question</h3>
+      <h3 className="text-[#3a6a8c] font-bold text-sm">
+        Question by{"-"}
+        <span className="text-[#001B2E] font-bold text-md">{userName}</span>
+      </h3>
       <div className="flex items-center justify-between">
         <h1 className="text-[#001B2E] font-bold w-11/12 text-lg ml-2 mt-3">
           {question}
         </h1>
-        <img
+        {/* <img
           src={"/assets/images/bookmark.png"}
           alt="Bookmark"
           className="w-7 mr-5"
-        />
+        /> */}
       </div>
 
       <hr

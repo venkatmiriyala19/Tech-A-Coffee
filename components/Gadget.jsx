@@ -10,8 +10,8 @@ export default function Gadget({ title, price, rating, image, count }) {
     setTimeout(() => setIsInverted(false), 300);
   };
   return (
-    <div className="w-[15vw] ">
-      <div className="w-[15vw] h-[15vw] flex items-center justify-center rounded-xl bg-white p-5">
+    <div className="w-[20vw]">
+      <div className="w-[20vw] h-[20vw] flex items-center justify-center rounded-xl bg-white p-5">
         <img
           src={image}
           alt="Gadget"
@@ -20,11 +20,11 @@ export default function Gadget({ title, price, rating, image, count }) {
       </div>
       <div className="flex items-center justify-between px-1 pt-2 pb-1">
         <h1 className="font-bold line-clamp-2">{title}</h1>
-        <img
+        {/* <img
           src="/assets/images/bookmark_white.png"
           alt="Bookmark"
           className="w-5 h-5 cursor-pointer"
-        />
+        /> */}
       </div>
       <h2 className="flex items-center pl-1">
         <FaStar color="#FFC633" style={{ marginRight: "0.5rem" }} />

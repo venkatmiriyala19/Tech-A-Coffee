@@ -13,7 +13,7 @@ export default async function TechGadgets() {
       <h1 className="font-headerBold text-[1.7rem] mb-10 ml-10">
         Latest in Tech
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ml-10  mr-5 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ml-10 mb-8 mr-5 gap-10">
         {gadgets.map((gadget) => (
           <Gadget
             key={gadget.id}

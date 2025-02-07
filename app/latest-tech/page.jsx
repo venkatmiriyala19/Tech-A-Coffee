@@ -17,7 +17,7 @@ export default function LatestTech() {
       <h1 className="font-headerBold text-[1.7rem] mb-5 ml-5">
         Latest in Tech
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ml-5 mr-5 gap-10">
+      <div className="grid grid-cols-4 ml-5">
         {news.map((item) => (
           <News
             key={item.id}

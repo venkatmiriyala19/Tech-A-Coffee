@@ -24,11 +24,11 @@ export default function News({ title, date, img, url, width }) {
             <h1 className="line-clamp-2 hover:underline">{title}</h1>{" "}
             {/* Limit to 2 lines */}
           </a>
-          <img
+          {/* <img
             src={"/assets/images/bookmark.png"}
             alt="Bookmark"
             className="w-7"
-          />
+          /> */}
         </div>
       </div>
     </div>

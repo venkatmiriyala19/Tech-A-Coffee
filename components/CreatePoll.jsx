@@ -72,11 +72,6 @@ export default function CreatePoll() {
             e.target.style.height = `${e.target.scrollHeight}px`;
           }}
         />
-        <img
-          src={"/assets/images/bookmark.png"}
-          alt="Bookmark"
-          className="w-7 mr-5"
-        />
       </div>
       <hr
         className="mt-10 mb-5 border-t-2 mx-2 w-11/12"

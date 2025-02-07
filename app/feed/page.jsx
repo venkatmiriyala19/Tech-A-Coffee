@@ -74,7 +74,7 @@ export default function Feed() {
             <p>Loading News...</p>
           ) : (
             news
-              .slice(0, 4)
+              .slice(0, 2)
               .map((item) => (
                 <NewsHome
                   key={item.id}
