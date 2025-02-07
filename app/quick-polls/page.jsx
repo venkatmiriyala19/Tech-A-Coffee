@@ -1,10 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useUser } from "@clerk/nextjs"; // Import the hook
 import CreatePoll from "@/components/CreatePoll";
 import QuickPoll from "@/components/QuickPoll";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 export default function QuickPolls() {
+  const { user } = useUser(); // Get user information from Clerk
   const [polls, setPolls] = useState([]);
 
   useEffect(() => {
@@ -15,6 +17,7 @@ export default function QuickPolls() {
           throw new Error("Failed to fetch polls");
         }
         const data = await response.json();
+        console.log(data);
         setPolls(data);
       } catch (error) {
         console.error("Error fetching polls:", error);
@@ -47,7 +50,7 @@ export default function QuickPolls() {
           >
             <Masonry gutter="20px">
               {polls.map((poll) => (
-                <QuickPoll key={poll._id} poll={poll} />
+                <QuickPoll key={poll._id} poll={poll} userId={user?.id} />
               ))}
             </Masonry>
           </ResponsiveMasonry>

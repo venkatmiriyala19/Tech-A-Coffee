@@ -45,9 +45,9 @@ export default function PollOption({
     <div
       className={`mx-2 w-11/12 p-4 rounded flex items-center justify-between cursor-pointer 
         ${isVoting ? "opacity-50" : ""} ${
-        isSelected ? "bg-[#A3C4D7]" : "bg-[#B3CDE4]"
+        isSelected ? "bg-[#7ab3d4]" : "bg-[#B3CDE4]"
       }`}
-      style={{ backgroundColor: isSelected ? "#A3C4D7" : "#B3CDE4" }}
+      style={{ backgroundColor: isSelected ? "#7ab3d4" : "#B3CDE4" }}
       onClick={handleVote}
     >
       {/* Left Section: Circle and Option Label */}
@@ -66,7 +66,9 @@ export default function PollOption({
             />
           )}
         </div>
-        <span className="ml-2 text-[#001B2E] font-medium">{option.text}</span>
+        <span className="ml-2 mr-2 text-[#001B2E] font-medium">
+          {option.text}
+        </span>
       </div>
 
       {/* Right Section: Percentage */}

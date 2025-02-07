@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PollOption from "./PollOption";
 
-export default function QuickPoll({ poll }) {
-  const { _id, question, options } = poll;
+export default function QuickPoll({ poll, userId }) {
+  const { _id, question, options, votedUsers } = poll; // Deconstruct `votedUsers`
   const [updatedOptions, setUpdatedOptions] = useState(options);
   const [userVoted, setUserVoted] = useState(false);
   const [selectedOptionId, setSelectedOptionId] = useState(null);
+
+  useEffect(() => {
+    // Check if the current user has voted
+    if (votedUsers.includes(userId)) {
+      // Find the option the user voted for
+      const votedOption = updatedOptions.find((option) => option.votes > 0); // Assuming `votes > 0` means user voted
+      setSelectedOptionId(votedOption._id);
+      setUserVoted(true);
+    }
+  }, [updatedOptions, votedUsers, userId]);
 
   const handleVote = (optionId) => {
     // Update the options state to reflect the vote
