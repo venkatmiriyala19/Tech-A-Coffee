@@ -1,8 +1,26 @@
-import PollOption from "./PollOption";
 import { useState } from "react";
+import PollOption from "./PollOption";
 
 export default function QuickPoll({ poll }) {
-  const { question, options } = poll;
+  const { _id, question, options } = poll;
+  const [updatedOptions, setUpdatedOptions] = useState(options);
+  const [userVoted, setUserVoted] = useState(false);
+  const [selectedOptionId, setSelectedOptionId] = useState(null);
+
+  const handleVote = (optionId) => {
+    // Update the options state to reflect the vote
+    const updatedOpts = updatedOptions.map((opt) =>
+      opt._id === optionId ? { ...opt, votes: opt.votes + 1 } : opt
+    );
+    setUpdatedOptions(updatedOpts);
+    setSelectedOptionId(optionId); // Save the selected option's ID
+    setUserVoted(true); // Set flag to true after user has voted
+  };
+
+  const totalVotes = updatedOptions.reduce(
+    (acc, option) => acc + option.votes,
+    0
+  );
 
   return (
     <div className="bg-[#EEF3F9] w-full rounded-3xl p-3 px-5 border-2 border-black mb-4 h-auto">
@@ -24,11 +42,22 @@ export default function QuickPoll({ poll }) {
       />
 
       {/* Map through poll options */}
-      {options.map((option, index) => (
-        <div className="my-3" key={index}>
-          <PollOption option={option} />
-        </div>
-      ))}
+      {updatedOptions.map((option) => {
+        const percentage =
+          totalVotes > 0 ? (option.votes / totalVotes) * 100 : 0;
+
+        return (
+          <div className="my-3" key={option._id}>
+            <PollOption
+              option={option}
+              pollId={_id}
+              onVote={handleVote}
+              isSelected={selectedOptionId === option._id} // Pass selected state
+              percentage={percentage.toFixed(2)} // Pass percentage as a prop
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
