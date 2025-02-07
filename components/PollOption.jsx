@@ -1,6 +1,6 @@
 import { FaRegCircle, FaCircle } from "react-icons/fa";
 
-export default function PollOption() {
+export default function PollOption({ option }) {
   return (
     <div className="mx-2 w-11/12 bg-[#B3CDE4] p-4 rounded flex items-center justify-between">
       {/* Left Section: Circle and Option Label */}
@@ -15,10 +15,10 @@ export default function PollOption() {
             style={{ fontSize: "0.9rem", marginTop: "0.35rem" }}
           />
         </div>
-        <span className="ml-2 text-[#001B2E] font-medium">Option Label</span>
+        <span className="ml-2 text-[#001B2E] font-medium">{option.text}</span>
       </div>
       {/* Right Section: Percentage */}
-      <span className="text-[#1D3F58]  font-bold">73%</span>
+      <span className="text-[#1D3F58] font-bold">{option.votes}%</span>
     </div>
   );
 }

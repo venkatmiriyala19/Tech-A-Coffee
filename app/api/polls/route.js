@@ -52,3 +52,17 @@ export async function POST(request) {
     );
   }
 }
+
+export async function GET(request) {
+  try {
+    await connectDB();
+    const polls = await Poll.find().sort({ createdAt: -1 });
+    return NextResponse.json(polls);
+  } catch (error) {
+    console.error("Poll retrieval error:", error);
+    return NextResponse.json(
+      { error: "Failed to retrieve polls" },
+      { status: 500 }
+    );
+  }
+}
