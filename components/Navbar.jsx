@@ -24,14 +24,15 @@ export default function Navbar() {
       <div className="border-2 border-[#EEF3F9] px-[3rem] rounded-3xl">
         <ul className="font-headerMedium flex space-x-10 transition-all duration-300 ease-in-out">
           {navItems.map((item) => (
-            <li
-              key={item.route}
-              className={`cursor-pointer pt-2 pb-3  ${
-                pathname === item.route ? "bg-[#EEf3f9] text-black px-2" : ""
-              } transition-all duration-300 ease-in-out`}
-            >
-              <Link href={item.route}>{item.name}</Link>
-            </li>
+            <Link href={item.route} key={item.route}>
+              <li
+                className={`cursor-pointer pt-2 pb-3  ${
+                  pathname === item.route ? "bg-[#EEf3f9] text-black px-2" : ""
+                } transition-all duration-300 ease-in-out`}
+              >
+                {item.name}
+              </li>
+            </Link>
           ))}
         </ul>
       </div>

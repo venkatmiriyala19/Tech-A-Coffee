@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { FaRegCircle, FaCircle, FaPlus } from "react-icons/fa";
 import { useAuth } from "@clerk/nextjs";
 
-export default function CreatePoll() {
+export default function CreatePoll({ onNewPollCreated }) {
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState([{ id: 1, text: "" }]);
   const [newOptionText, setNewOptionText] = useState("");
   const { userId } = useAuth();
+  const [loading, setLoading] = useState(false); // Track loading state
 
   const handleAddOption = () => {
     if (newOptionText.trim()) {
@@ -33,6 +34,7 @@ export default function CreatePoll() {
   };
 
   const handleSubmit = async () => {
+    setLoading(true); // Set loading state to true when starting the submission
     try {
       const response = await fetch("/api/polls", {
         method: "POST",
@@ -52,10 +54,14 @@ export default function CreatePoll() {
       // Reset form or redirect
       setQuestion("");
       setOptions([{ id: 1, text: "" }]);
+      onNewPollCreated();
     } catch (error) {
       console.error("Error creating poll:", error);
+    } finally {
+      setLoading(false); // Set loading state to false once the request is finished
     }
   };
+
   return (
     <div className="bg-[#EEF3F9] w-[50vw] rounded-3xl p-3 px-5 border-2 border-black">
       <h3 className="text-[#1D3F58] font-bold text-sm">Question</h3>
@@ -127,15 +133,24 @@ export default function CreatePoll() {
           <FaPlus className="mr-1" /> Add Option
         </button>
       </div>
-      {/* Submit Poll Button */}
-      <div className="mt-5 flex justify-start">
-        <button
-          onClick={handleSubmit}
-          className="bg-[#1D3F58] ml-2 text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#1D3F58]"
-        >
-          Submit Poll
-        </button>
-      </div>
+
+      {/* Loading animation during submission */}
+      {loading ? (
+        <div className="dots-container bg-black bg-opacity-50">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
+      ) : (
+        <div className="mt-5 flex justify-start">
+          <button
+            onClick={handleSubmit}
+            className="bg-[#1D3F58] ml-2 text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[#1D3F58]"
+          >
+            Submit Poll
+          </button>
+        </div>
+      )}
     </div>
   );
 }

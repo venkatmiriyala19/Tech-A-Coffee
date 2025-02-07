@@ -96,3 +96,7 @@ body {
     box-shadow: 0 0 0 0 rgba(243, 243, 243, 0.7);
   }
 }
+.section-loading {
+  position: relative;
+  min-height: 200px; /* Adjust as needed */
+}
