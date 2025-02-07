@@ -5,7 +5,7 @@ export default function QuickPoll({ poll }) {
   const { question, options } = poll;
 
   return (
-    <div className="bg-[#EEF3F9] w-[40vw] rounded-3xl p-3 px-5 border-2 border-black mb-4">
+    <div className="bg-[#EEF3F9] w-full rounded-3xl p-3 px-5 border-2 border-black mb-4 h-auto">
       <h3 className="text-[#1D3F58] font-bold text-sm">Question</h3>
       <div className="flex items-center justify-between">
         <h1 className="text-[#001B2E] font-bold w-11/12 text-lg ml-2 mt-3">
@@ -25,7 +25,9 @@ export default function QuickPoll({ poll }) {
 
       {/* Map through poll options */}
       {options.map((option, index) => (
-        <PollOption key={index} option={option} />
+        <div className="my-3" key={index}>
+          <PollOption option={option} />
+        </div>
       ))}
     </div>
   );

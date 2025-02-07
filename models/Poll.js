@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const PollSchema = new mongoose.Schema({
   userId: {
     type: String,
@@ -7,7 +6,7 @@ const PollSchema = new mongoose.Schema({
   },
   userName: {
     type: String,
-    required: true, // Ensure userName is stored
+    required: true,
   },
   question: {
     type: String,
@@ -20,6 +19,11 @@ const PollSchema = new mongoose.Schema({
         type: Number,
         default: 0,
       },
+    },
+  ],
+  votedUsers: [
+    {
+      type: String, // Store user IDs of users who have voted
     },
   ],
   createdAt: {
