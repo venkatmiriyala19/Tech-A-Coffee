@@ -2,13 +2,19 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Poll from "@/models/Poll";
 import { getAuth } from "@clerk/nextjs/server";
+import { clerkClient } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 
 export async function POST(request) {
   try {
     const { userId } = getAuth(request);
+    const user = await currentUser();
+
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const { firstName, lastName, emailAddress } = user;
+    console.log("User:", firstName);
 
     await connectDB();
     const { question, options } = await request.json();
@@ -27,12 +33,14 @@ export async function POST(request) {
       votes: 0,
     }));
 
+    const userName = `${firstName} ${lastName}`.trim(); // Construct full name
+
     const poll = await Poll.create({
       userId,
+      userName,
       question,
       options: pollOptions,
       createdAt: new Date(),
-      totalVotes: 0,
     });
 
     return NextResponse.json(poll);

@@ -5,7 +5,10 @@ const PollSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  userName: String,
+  userName: {
+    type: String,
+    required: true, // Ensure userName is stored
+  },
   question: {
     type: String,
     required: true,
@@ -25,5 +28,4 @@ const PollSchema = new mongoose.Schema({
   },
 });
 
-// ✅ Correct model export
 export default mongoose.models.Poll || mongoose.model("Poll", PollSchema);
