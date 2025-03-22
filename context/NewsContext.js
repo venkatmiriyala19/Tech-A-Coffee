@@ -8,7 +8,7 @@ export const NewsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const fetchGuardianData = async () => {
-    const apiKey = "cae658f8-8af5-4106-bec4-66232092b612";
+    const apiKey = process.env.NEXT_PUBLIC_GUARDIAN_API_KEY;
     const url = `https://content.guardianapis.com/search?section=technology&api-key=${apiKey}&show-fields=thumbnail`;
     try {
       const response = await fetch(url);
